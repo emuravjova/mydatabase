@@ -36,3 +36,5 @@ CREATE TABLE deal (
   date DATE,
 FOREIGN KEY (sale_id) REFERENCES sale_propos(sale_id)
     );
+
+DROP TABLE IF EXISTS years;

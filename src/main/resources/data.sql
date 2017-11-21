@@ -10,7 +10,7 @@ INSERT INTO seller VALUES (2, 'Ron', '30972345678');
 INSERT INTO seller VALUES (3, 'Bob', '30963456789');
 INSERT INTO seller VALUES (4, 'Carl', '30954567890');
 
-INSERT INTO sale_propos VALUES (1, 5, 4, 4000, 1);
+INSERT INTO sale_propos VALUES (1, 5, 4, 40000, 1);
 INSERT INTO sale_propos VALUES (2, 4, 3, 50000, NULL);
 INSERT INTO sale_propos VALUES (3, 3, 2, 21000, 7);
 INSERT INTO sale_propos VALUES (4, 2, 1, 75000, NULL);
