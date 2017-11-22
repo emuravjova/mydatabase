@@ -1,13 +1,16 @@
 - list of cars available on sale with the best deal proposed at the moment;
-SELECT max(deal.price) as best_price, available_cars.brand FROM
-(SELECT sale_propos.sale_id, car.brand FROM car INNER JOIN sale_propos on car.car_id = sale_propos.car_id WHERE sale_propos.deal_ID IS NOT NULL) as available_cars
- INNER JOIN deal on available_cars.sale_id  = deal.sale_id  GROUP by available_cars .sale_id;
+SELECT max(d.price) as best_price, c.brand FROM
+car c INNER JOIN seller_propos sp ON c.car_id = sp.car_id
+INNER JOIN deal d ON sp.sale_id  = d.sale_id
+WHERE sp.deal_id IS NULL AND d.state = 'active' GROUP BY d.sale_id;
 
 - the most expensive sold car;
-SELECT car.brand, car.number, car.year, car.color FROM
-(SELECT sale_propos.sale_id, sale_propos.car_id FROM sale_propos INNER JOIN deal on sale_propos.sale_id = deal.sale_id WHERE sale_propos.deal_ID IS NOT NULL and deal.price = (select max(deal.price) FROM deal WHERE deal.state = 'accepted')) as expencive_car
-INNER JOIN car on expencive_car.car_id = car.car_id;
+SELECT c.brand, c.number, c.year, c.color FROM
+seller_propos sp INNER JOIN deal d ON sp.sale_id = d.sale_id
+INNER JOIN car c ON c.car_id = sp.car_id
+WHERE sp.deal_id IS NOT NULL AND d.price = (select max(d.price) FROM deal d WHERE d.state = 'accepted');
 
 - the most popular year of sold cars;
-CREATE VIEW years AS SELECT car.year, count(*) as count FROM sale_propos INNER JOIN car on sale_propos.car_id = car.car_id WHERE sale_propos.deal_ID IS NOT NULL GROUP BY car.year;
+DROP TABLE IF EXISTS years;
+CREATE VIEW years AS SELECT car.year, count(*) as count FROM seller_propos INNER JOIN car on seller_propos.car_id = car.car_id WHERE seller_propos.deal_id IS NOT NULL GROUP BY car.year;
 SELECT year as most_popular_year FROM years WHERE count = (SELECT MAX(count) FROM years);

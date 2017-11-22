@@ -1,5 +1,8 @@
-
 DROP TABLE IF EXISTS car;
+DROP TABLE IF EXISTS seller;
+DROP TABLE IF EXISTS seller_propos;
+DROP TABLE IF EXISTS deal;
+
 CREATE TABLE car (
   car_id         INTEGER PRIMARY KEY,
   number VARCHAR(20),
@@ -8,15 +11,13 @@ CREATE TABLE car (
   color VARCHAR(15)
 );
 
-DROP TABLE IF EXISTS seller;
 CREATE TABLE seller (
   seller_id         INTEGER PRIMARY KEY,
   name VARCHAR(20),
   contacts  VARCHAR(70)
  );
 
-DROP TABLE IF EXISTS sale_propos;
-CREATE TABLE sale_propos (
+CREATE TABLE seller_propos (
   sale_id INTEGER PRIMARY KEY,
   car_id INTEGER NOT NULL,
   seller_id  INTEGER NOT NULL,
@@ -27,14 +28,11 @@ FOREIGN KEY (seller_id) REFERENCES seller(seller_id),
 UNIQUE (car_id)
     );
 
-DROP TABLE IF EXISTS deal;
 CREATE TABLE deal (
   deal_id INTEGER PRIMARY KEY,
   sale_id INTEGER NOT NULL,
   price INTEGER check (price>0),
   state ENUM('active', 'rejected', 'accepted'),
   date DATE,
-FOREIGN KEY (sale_id) REFERENCES sale_propos(sale_id)
+FOREIGN KEY (sale_id) REFERENCES seller_propos(sale_id)
     );
-
-DROP TABLE IF EXISTS years;
