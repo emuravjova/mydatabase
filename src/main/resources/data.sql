@@ -1,10 +1,10 @@
 INSERT INTO car VALUES
-(1, '1234', 'BMW', '2019', 'red'),
-(2, '2345', 'Lexus', '2018', 'blue'),
-(3, '3456', 'Audi', '2017', 'black'),
-(4, '4567', 'Volkswagen', '2016',	'white'),
-(5, '5678', 'Peugeot', '2017', 'yellow'),
-(6, '6789', 'Renault', '2015', 'green');
+(1, '1234', 'BMW', 2019, 'red'),
+(2, '2345', 'Lexus', 2018, 'blue'),
+(3, '3456', 'Audi', 2017, 'black'),
+(4, '4567', 'Volkswagen', 2016,	'white'),
+(5, '5678', 'Peugeot', 2017, 'yellow'),
+(6, '6789', 'Renault', 2015, 'green');
 
 INSERT INTO seller VALUES
 (1, 'Den', '30981234567'),
