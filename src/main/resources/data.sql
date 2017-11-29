@@ -12,7 +12,7 @@ INSERT INTO seller VALUES
 (3, 'Bob', '30963456789'),
 (4, 'Carl', '30954567890');
 
-INSERT INTO seller_propos VALUES
+INSERT INTO offer VALUES
 (1, 5, 4, 40000, 1),
 (2, 4, 3, 50000, NULL),
 (3, 3, 2, 21000, 8),
